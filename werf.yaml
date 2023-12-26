@@ -1,0 +1,32 @@
+configVersion: 1
+project: 'go-svc'
+---
+image: builder
+from: golang:1.19-alpine3.18
+docker:
+  WORKDIR: /go/src/github.com/apodeixis/mailjet-svc
+git:
+  - add: /
+    to: /go/src/github.com/apodeixis/mailjet-svc
+    stageDependencies:
+      setup:
+        - "**/*"
+shell:
+  setup:
+    - export CGO_ENABLED=0
+    - export GOOS=linux
+    - go build -o /usr/local/bin/mailjet-svc /go/src/github.com/apodeixis/mailjet-svc/main.go
+
+---
+image: service
+from: alpine:3.18
+docker:
+  ENTRYPOINT: mailjet-svc
+shell:
+  setup:
+    - apk add --no-cache ca-certificates
+import:
+  - image: builder
+    add: /usr/local/bin/mailjet-svc
+    to: /usr/local/bin/mailjet-svc
+    after: setup

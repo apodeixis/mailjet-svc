@@ -1,0 +1,16 @@
+log:
+  level: debug
+  disable_sentry: true
+
+listener:
+  addr: :8070
+
+mailjet:
+  public_api_key: ...
+  private_api_key: ...
+  from_email: ...
+
+notifications_router:
+  register_endpoint: http://localhost:8045
+  upstream: http://localhost:8070
+  channel: email

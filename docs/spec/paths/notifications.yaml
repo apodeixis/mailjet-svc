@@ -1,0 +1,30 @@
+post:
+  tags:
+    - Notifications
+  operationId: createNotification
+  requestBody:
+    required: true
+    content:
+      application/vnd.api+json:
+        schema:
+          type: object
+          required:
+            - data
+          properties:
+            data:
+              $ref: '#/components/schemas/CreateNotification'
+  responses:
+    204:
+      description: Success
+    400:
+      description: Bad request.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/Errors'
+    500:
+      description: Internal server error.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/Errors'

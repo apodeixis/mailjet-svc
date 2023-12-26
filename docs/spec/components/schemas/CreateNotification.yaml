@@ -1,0 +1,32 @@
+allOf:
+  - type: object
+    required:
+      - type
+    properties:
+      type:
+        type: string
+
+  - type: object
+    required:
+      - attributes
+      - relationships
+    properties:
+      attributes:
+        type: object
+        required:
+          - message
+        properties:
+          message:
+            $ref: '#/components/schemas/Message'
+      relationships:
+        type: object
+        required:
+          - destination
+        properties:
+          destination:
+            type: object
+            required:
+              - data
+            properties:
+              data:
+                $ref: '#/components/schemas/DestinationKey'
