@@ -15,7 +15,9 @@ shell:
   setup:
     - export CGO_ENABLED=0
     - export GOOS=linux
-    - go build -o /usr/local/bin/mailjet-svc /go/src/github.com/apodeixis/mailjet-svc/main.go
+    - cd /go/src/github.com/apodeixis/mailjet-svc
+    - go mod download
+    - go build -o /usr/local/bin/mailjet-svc main.go
 
 ---
 image: service
