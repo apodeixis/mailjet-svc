@@ -2,6 +2,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
+[![Documentation](https://img.shields.io/badge/GitHub%20Pages-222222?style=for-the-badge&logo=GitHub)]( https://apodeixis.github.io/mailjet-svc)
+
 This is a Go microservice which integrates with Mailjet API to send emails.
 
 Serves as a worker for [notifications-router-svc](https://github.com/apodeixis/notifications-router-svc).
