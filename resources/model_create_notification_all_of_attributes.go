@@ -22,6 +22,7 @@ var _ MappedNullable = &CreateNotificationAllOfAttributes{}
 // CreateNotificationAllOfAttributes struct for CreateNotificationAllOfAttributes
 type CreateNotificationAllOfAttributes struct {
 	Message Message `json:"message"`
+	Channel *string `json:"channel,omitempty"`
 }
 
 type _CreateNotificationAllOfAttributes CreateNotificationAllOfAttributes
@@ -68,6 +69,38 @@ func (o *CreateNotificationAllOfAttributes) SetMessage(v Message) {
 	o.Message = v
 }
 
+// GetChannel returns the Channel field value if set, zero value otherwise.
+func (o *CreateNotificationAllOfAttributes) GetChannel() string {
+	if o == nil || IsNil(o.Channel) {
+		var ret string
+		return ret
+	}
+	return *o.Channel
+}
+
+// GetChannelOk returns a tuple with the Channel field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *CreateNotificationAllOfAttributes) GetChannelOk() (*string, bool) {
+	if o == nil || IsNil(o.Channel) {
+		return nil, false
+	}
+	return o.Channel, true
+}
+
+// HasChannel returns a boolean if a field has been set.
+func (o *CreateNotificationAllOfAttributes) HasChannel() bool {
+	if o != nil && !IsNil(o.Channel) {
+		return true
+	}
+
+	return false
+}
+
+// SetChannel gets a reference to the given string and assigns it to the Channel field.
+func (o *CreateNotificationAllOfAttributes) SetChannel(v string) {
+	o.Channel = &v
+}
+
 func (o CreateNotificationAllOfAttributes) MarshalJSON() ([]byte, error) {
 	toSerialize, err := o.ToMap()
 	if err != nil {
@@ -79,6 +112,9 @@ func (o CreateNotificationAllOfAttributes) MarshalJSON() ([]byte, error) {
 func (o CreateNotificationAllOfAttributes) ToMap() (map[string]interface{}, error) {
 	toSerialize := map[string]interface{}{}
 	toSerialize["message"] = o.Message
+	if !IsNil(o.Channel) {
+		toSerialize["channel"] = o.Channel
+	}
 	return toSerialize, nil
 }
 

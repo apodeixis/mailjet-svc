@@ -18,6 +18,8 @@ allOf:
         properties:
           message:
             $ref: '#/components/schemas/Message'
+          channel:
+            type: string
       relationships:
         type: object
         required:
