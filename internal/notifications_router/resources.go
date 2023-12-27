@@ -6,11 +6,11 @@ const (
 
 type (
 	registerServiceRequest struct {
-		Data registerServiceData
+		Data registerServiceData `json:"data"`
 	}
 	registerServiceData struct {
-		Type       string
-		Attributes registerServiceAttributes
+		Type       string                    `json:"type"`
+		Attributes registerServiceAttributes `json:"attributes"`
 	}
 	registerServiceAttributes struct {
 		Endpoint string   `json:"endpoint"`
